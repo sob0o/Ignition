@@ -1,0 +1,47 @@
+services:
+  modbus-simulator:
+    build:
+      context: .
+      dockerfile: Dockerfile.modbus
+    container_name: modbus-simulator
+    ports:
+      - "502:502"
+    networks:
+      - my_network
+
+  nodered:
+    image: nodered/node-red
+    container_name: nodered
+    ports:
+      - "1880:1880"
+    volumes:
+      - nodered_data:/data
+    restart: always
+    networks:
+      - my_network
+
+  mosquitto:
+    image: eclipse-mosquitto:1.6.15
+    container_name: mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    restart: always
+    networks:
+      - my_network
+
+  ignition:
+    image: inductiveautomation/ignition
+    container_name: ignition
+    ports:
+      - "8088:8088"
+    restart: always
+    networks:
+      - my_network
+
+volumes:
+  nodered_data:
+
+networks:
+  my_network:
+    driver: bridge

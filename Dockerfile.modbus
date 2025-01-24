@@ -1,0 +1,14 @@
+# Use an official Python image as the base
+FROM python:3.9
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the application code to the container
+COPY ./modbus_sim/modbus_server.py /app/
+
+# Install required Python packages
+RUN pip install pyModbusTCP
+
+# Run the Modbus server script
+CMD ["python", "modbus_server.py"]
