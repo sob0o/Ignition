@@ -17,8 +17,8 @@ try:
     while True:
         try:
             # Simulate data change every second
-            DataBank.set_words(0, [100])  # Update holding register 0 to 100
-            DataBank.set_words(1, [200])  # Update holding register 1 to 200
+            server.data_bank.set_holding_registers(0, [100])  # Update holding register 0 to 100
+            server.data_bank.set_holding_registers(1, [200])  # Update holding register 1 to 200
             time.sleep(1)
         except Exception as e:
             logging.error(f"Error while updating Modbus registers: {e}")
