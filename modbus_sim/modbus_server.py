@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.DEBUG)
 # Create and start Modbus server
 server = ModbusServer('0.0.0.0', port=502, no_block=True)
 
-logging.debug("Starting Modbus server on port 502...")
+logging.debug("Starting Modbus server on port 502....")
 
 try:
     server.start()
